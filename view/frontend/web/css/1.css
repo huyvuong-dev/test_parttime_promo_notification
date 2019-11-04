@@ -1,0 +1,20 @@
+.selected
+{
+    background-color:antiquewhite;
+}
+.dot {
+    height: 20px;
+    width: 20px;
+    background-color: #ff5501;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    top: 535px;
+}
+
+.qty{
+    height: 20px;
+    width: 20px;
+    color: #ffffff;
+    margin-left: 6px;
+}

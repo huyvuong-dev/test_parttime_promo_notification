@@ -1,0 +1,50 @@
+<?php
+/** @var Magenest\Promotion\Block\Promotion\Dashboard\Info $block*/
+$datas = $block->getDataPromotion();
+$promo = $block->getPromotion();
+?>
+
+<link rel="stylesheet" type="text/css" href="<?php echo $block->getViewFileUrl('Magenest_Promotion::css/1.css')?>">
+<?= $block->getChildHtml('info') ?>
+<?php if ($promo && count($promo)) : ?>
+    <div class="notifications">
+        <table class="data" id="test-data-table">
+            <thead>
+                <tr>
+                    <th scope="col" class="col stt">STT</th>
+                    <th scope="col" class="col date">Date</th>
+                    <th scope="col" class="col description">Short Description</th>
+                    <th scope="col" class="col action">Action</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: frameworks">
+                <?php
+                $stt = 1;
+                foreach ($datas as $data): ?>
+                    <tr <?php if ($block->checkMarkAsRead($data['entity_id']) == false): ?> class="selected" <?php endif;?>>
+                        <td ><?php echo $stt ?></td>
+                        <td ><?php echo $data['created_at'] ?></td>
+                        <td ><?php echo $data['short_description'] ?></td>
+        <!--                fill in redirect_url in admin = 'project_folder_name'/promo/notification/url-->
+                        <td><a id="viewdetail" style="color: blue" href="<?php echo '/'.$data['redirect_url'].'?id='.$data['entity_id']?>">View Detail</a> |
+                            <?php if ($block->checkMarkAsRead($data['entity_id']) == false): ?>
+                                <a id="mark" style="color: blue" href="<?php echo $block->getMarkAsReadUrl().'?id='.$data['entity_id'];?>">Mark as read</a> |
+                                <?php endif;?>
+                            <a style="color: blue" href="<?php echo $block->getDeleteUrl().'?id='.$data['entity_id'];?>">Delete</a></td>
+                    </tr>
+                <?php
+                $stt++;
+                endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <?php if ($block->getPagerHtml()) : ?>
+        <div class="promotion-notifications-toolbar toolbar bottom"><?= $block->getPagerHtml() ?></div>
+    <?php endif ?>
+<?php else : ?>
+<div class="message info empty"><span><?= $block->escapeHtml(__('You have placed no orders.')) ?></span></div>
+<?php endif ?>
+<script data-require="jquery" data-semver="2.1.4" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+
+</script>

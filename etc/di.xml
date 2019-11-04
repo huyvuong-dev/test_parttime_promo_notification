@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- PromotionsGridDataProvider -->
+    <virtualType name="PromotionsGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Magenest\Promotion\Model\ResourceModel\Promotion\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">PromotionsGridFilterPool</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="PromotionsGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="promo_index_listing_data_source" xsi:type="string">Magenest\Promotion\Model\ResourceModel\Promotion\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Magenest\Promotion\Model\ResourceModel\Promotion\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">promo_notification</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\Promotion\Model\ResourceModel\Promotion</argument>
+        </arguments>
+    </virtualType>
+</config>

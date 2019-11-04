@@ -1,0 +1,24 @@
+<?php
+/**@var Magenest\Promotion\Block\Promotion\Detail $block*/
+
+$promos = $block->getDetailPromotion();
+?>
+<table class="data table" id="test-data-table">
+    <caption class="table-caption">Promotion Detail</caption>
+    <thead>
+    <tr>
+        <th scope="col" class="col name">Name</th>
+        <th scope="col" class="col create at">Create At</th>
+        <th scope="col" class="col description">Short Description</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td data-th="name" class="col name"><?php echo $promos['name']; ?></td>
+            <td data-th="rating" class="col rating"><?php echo $promos['created_at']; ?></td>
+            <td data-th="description" class="col description"><?php echo $promos['short_description']; ?></td>
+        </tr>
+    </tbody>
+</table>
+<a href="../notification">Back</a>
+

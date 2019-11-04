@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add
+                id="Magenest_Promotion::promotion"
+                title="Promotion"
+                module="Magenest_Promotion"
+                sortOrder="50"
+                parent="Magento_Backend::marketing"
+                resource="Magenest_Promotion::promotion"
+        />
+        <add
+                id="Magenest_Promotion::index"
+                title="Promotion Index"
+                module="Magenest_Promotion"
+                sortOrder="55"
+                parent="Magenest_Promotion::promotion"
+                action="promo/index/index"
+                resource="Magenest_Promotion::index"
+        />
+    </menu>
+</config>

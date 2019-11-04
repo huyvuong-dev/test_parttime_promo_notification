@@ -1,0 +1,13 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="customer_account_navigation">
+            <block class="Magenest\Promotion\Block\Promotion\CountQty" name="customer-account-navigation-myblog">
+                <arguments>
+
+                    <argument name="template" xsi:type="string">Magenest_Promotion::label.phtml</argument>
+                </arguments>
+
+            </block>
+        </referenceBlock>
+    </body>
+</page>
