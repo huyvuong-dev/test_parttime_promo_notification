@@ -62,11 +62,16 @@ class CountQty extends \Magento\Framework\View\Element\Template
             $containsSearch = count(array_intersect($arrViewed, $arrReceived));
             $quantity = count($arrReceived) - $containsSearch;
             return $quantity;
-        }elseif (!isset($attributeViewed)){
+        }
+        if (!isset($attributeViewed) && isset($attributeReceived)){
             $valueReceived = $attributeReceived->getValue();
             $arrReceived = explode('|',$valueReceived);
             return count($arrReceived);
         }
+        if (!isset($attributeViewed) && !isset($attributeReceived)){
+            return null;
+        }
+
     }
 
 

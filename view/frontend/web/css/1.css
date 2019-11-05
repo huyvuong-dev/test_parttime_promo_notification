@@ -10,11 +10,7 @@
     display: inline-block;
     position: absolute;
     top: 535px;
+    text-align: center;
+    color: #ffffff;
 }
 
-.qty{
-    height: 20px;
-    width: 20px;
-    color: #ffffff;
-    margin-left: 6px;
-}

@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo $block->getViewFileUrl('Magenest_Promotion::css/1.css')?>">
 <li class="nav item">
     <a href="/magento2/promo/notification">My Notification
-        <?php if ($block->getCountQty()!=0):?>
+        <?php if ($block->getCountQty()!=0 && $block->getCountQty() != null):?>
         <span class="dot">
             <span class="qty"><?php echo $block->getCountQty()?></span>
         </span>
