@@ -117,7 +117,7 @@
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">Redirect Url</item>
                     <item name="formElement" xsi:type="string">input</item>
-                    <item name="notice" xsi:type="string" translate="true">Recommand: 'project_name'/promo/notification/url</item>
+                    <item name="notice" xsi:type="string" translate="true">Recommand: promo/notification/url</item>
                 </item>
             </argument>
         </field>

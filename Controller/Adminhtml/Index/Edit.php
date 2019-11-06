@@ -16,13 +16,15 @@ class Edit extends \Magento\Backend\App\Action
         $this->_view->loadLayout();
         $this->_view->renderLayout();
 
-        $movieDatas = $this->getRequest()->getParam('promotion');
+        $promoDatas = $this->getRequest()->getParam('promotion');
 
-        if(is_array($movieDatas)) {
-            $contact = $this->_objectManager->create(Promotion::class);
-            $contact->setData($movieDatas);
-            $contact->setData($movieDatas)->save();
-            //$this->_eventManager->dispatch('change_rating_movie', ['movie' => $contact]);
+        if(is_array($promoDatas)) {
+            $promotion = $this->_objectManager->create(Promotion::class);
+            $promotion->setData($promoDatas);
+            $data = $promotion->getData();
+            $id = $data['entity_id'];
+            //$promotion->setData($movieDatas)->save();
+            $this->_eventManager->dispatch('check_status', ['promotion' => $promotion,'id'=>$id]);
             $resultRedirect = $this->resultRedirectFactory->create();
             return $resultRedirect->setPath('*/*/index');
         }

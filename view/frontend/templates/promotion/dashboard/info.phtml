@@ -25,8 +25,8 @@ $promo = $block->getPromotion();
                             <td ><?php echo $stt ?></td>
                             <td ><?php echo $data['created_at'] ?></td>
                             <td ><?php echo $data['short_description'] ?></td>
-            <!--                fill in redirect_url in admin = 'project_folder_name'/promo/notification/url-->
-                            <td><a id="viewdetail" style="color: blue" href="<?php echo '/'.$data['redirect_url'].'?id='.$data['entity_id']?>">View Detail</a> |
+            <!--                fill in redirect_url in admin = promo/notification/url-->
+                            <td><a id="viewdetail" style="color: blue" href="<?php echo $block->getUrl($data['redirect_url']).'?id='.$data['entity_id']?>">View Detail</a> |
                                 <?php if ($block->checkMarkAsRead($data['entity_id']) == false): ?>
                                     <a id="mark" style="color: blue" href="<?php echo $block->getMarkAsReadUrl().'?id='.$data['entity_id'];?>">Mark as read</a> |
                                     <?php endif;?>

@@ -18,6 +18,7 @@ class Url extends \Magento\Framework\App\Action\Action
     }
     public function execute()
     {
+
         $resultPage = $this->resultPageFactory->create();
 //        $this->_view->loadLayout();
 //        $this->_view->getLayout()->initMessages();

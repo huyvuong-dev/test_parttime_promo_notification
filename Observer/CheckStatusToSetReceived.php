@@ -46,9 +46,31 @@ class CheckStatusToSetReceived implements \Magento\Framework\Event\ObserverInter
                     $customerResource = $objectManager->create('\Magento\Customer\Model\ResourceModel\CustomerFactory')->create();
                     $customerResource->saveAttribute($customermodel, 'notification_received');
                 }
+            }
+        }else{
+            $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+            $customerObj = $objectManager->create('Magento\Customer\Model\Customer')->getCollection();
+            foreach ($customerObj as $customerObjdata) {
 
+                $customermodel  = $objectManager->create('Magento\Customer\Model\Customer');
+                $customerData = $customermodel->getDataModel();
+                $customerData->setId($customerObjdata->getData('entity_id'));
+                $entity_id = $customerObjdata->getData('entity_id');
+                $attribute = $this->_customer->getById($entity_id)->getCustomAttribute('notification_received');
+                //$arr = explode('|',$attribute->getValue());
+                if (isset($attribute)){
+                    $value = $attribute->getValue();
+                    $arrValue = explode('|',$value);
+                    foreach (array_keys($arrValue, $id) as $data) {
+                        unset($arrValue[$data]);
+                    }
+                    $listId = implode('|',$arrValue);
+                    $customerData->setCustomAttribute('notification_received', $listId);
+                    $customermodel->updateData($customerData);
 
-
+                    $customerResource = $objectManager->create('\Magento\Customer\Model\ResourceModel\CustomerFactory')->create();
+                    $customerResource->saveAttribute($customermodel, 'notification_received');
+                }
             }
         }
         $promotion->save();
